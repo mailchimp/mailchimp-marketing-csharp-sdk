@@ -1,0 +1,36 @@
+using Mailchimp.Marketing;
+using Mailchimp.Marketing.Test.Unit.MockServer;
+using NUnit.Framework;
+
+namespace Mailchimp.Marketing.Test.Unit.MockServer.Lists;
+
+[TestFixture]
+[Parallelizable(ParallelScope.Self)]
+public class DeleteInterestCategoryInterestTest : BaseMockServerTest
+{
+    [NUnit.Framework.Test]
+    public void MockServerTest()
+    {
+        Server
+            .Given(
+                WireMock
+                    .RequestBuilders.Request.Create()
+                    .WithPath(
+                        "/3.0/lists/list_id/interest-categories/interest_category_id/interests/interest_id"
+                    )
+                    .UsingDelete()
+            )
+            .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
+
+        Assert.DoesNotThrowAsync(async () =>
+            await Client.Lists.DeleteInterestCategoryInterestAsync(
+                new DeleteInterestCategoryInterestListsRequest
+                {
+                    ListId = "list_id",
+                    InterestCategoryId = "interest_category_id",
+                    InterestId = "interest_id",
+                }
+            )
+        );
+    }
+}

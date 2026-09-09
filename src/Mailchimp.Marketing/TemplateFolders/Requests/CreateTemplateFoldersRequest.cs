@@ -1,0 +1,20 @@
+using global::System.Text.Json.Serialization;
+using Mailchimp.Marketing.Core;
+
+namespace Mailchimp.Marketing;
+
+[Serializable]
+public record CreateTemplateFoldersRequest
+{
+    /// <summary>
+    /// The name of the folder.
+    /// </summary>
+    [JsonPropertyName("name")]
+    public required string Name { get; set; }
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+        return JsonUtils.Serialize(this);
+    }
+}

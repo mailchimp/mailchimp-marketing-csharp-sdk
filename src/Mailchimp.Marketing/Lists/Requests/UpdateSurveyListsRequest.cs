@@ -1,0 +1,44 @@
+using global::System.Text.Json.Serialization;
+using Mailchimp.Marketing.Core;
+
+namespace Mailchimp.Marketing;
+
+[Serializable]
+public record UpdateSurveyListsRequest
+{
+    /// <summary>
+    /// The unique ID for the list.
+    /// </summary>
+    [JsonIgnore]
+    public required string ListId { get; set; }
+
+    /// <summary>
+    /// The ID of the survey.
+    /// </summary>
+    [JsonIgnore]
+    public required string SurveyId { get; set; }
+
+    /// <summary>
+    /// The title of the survey.
+    /// </summary>
+    [JsonPropertyName("title")]
+    public string? Title { get; set; }
+
+    /// <summary>
+    /// Whether responses are sent to Mailchimp Inbox.
+    /// </summary>
+    [JsonPropertyName("is_piped_to_inbox")]
+    public bool? IsPipedToInbox { get; set; }
+
+    /// <summary>
+    /// The complete survey section list in display order. On update, sections omitted from this array are deleted. Include section id to update an existing section; omit section id to add a new section.
+    /// </summary>
+    [JsonPropertyName("sections")]
+    public IEnumerable<SurveySectionRequest>? Sections { get; set; }
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+        return JsonUtils.Serialize(this);
+    }
+}

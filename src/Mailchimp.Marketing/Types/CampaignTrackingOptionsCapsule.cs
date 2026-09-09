@@ -1,0 +1,34 @@
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
+using Mailchimp.Marketing.Core;
+
+namespace Mailchimp.Marketing;
+
+/// <summary>
+/// Deprecated
+/// </summary>
+[Serializable]
+public record CampaignTrackingOptionsCapsule : IJsonOnDeserialized
+{
+    [JsonExtensionData]
+    private readonly IDictionary<string, JsonElement> _extensionData =
+        new Dictionary<string, JsonElement>();
+
+    /// <summary>
+    /// Update contact notes for a campaign based on subscriber email addresses.
+    /// </summary>
+    [JsonPropertyName("notes")]
+    public bool? Notes { get; set; }
+
+    [JsonIgnore]
+    public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
+
+    void IJsonOnDeserialized.OnDeserialized() =>
+        AdditionalProperties.CopyFromExtensionData(_extensionData);
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+        return JsonUtils.Serialize(this);
+    }
+}

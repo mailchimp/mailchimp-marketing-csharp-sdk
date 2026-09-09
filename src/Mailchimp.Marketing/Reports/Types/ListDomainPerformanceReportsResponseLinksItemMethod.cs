@@ -1,0 +1,160 @@
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
+using Mailchimp.Marketing.Core;
+
+namespace Mailchimp.Marketing;
+
+[JsonConverter(
+    typeof(ListDomainPerformanceReportsResponseLinksItemMethod.ListDomainPerformanceReportsResponseLinksItemMethodSerializer)
+)]
+[Serializable]
+public readonly record struct ListDomainPerformanceReportsResponseLinksItemMethod : IStringEnum
+{
+    public static readonly ListDomainPerformanceReportsResponseLinksItemMethod Get = new(
+        Values.Get
+    );
+
+    public static readonly ListDomainPerformanceReportsResponseLinksItemMethod Post = new(
+        Values.Post
+    );
+
+    public static readonly ListDomainPerformanceReportsResponseLinksItemMethod Put = new(
+        Values.Put
+    );
+
+    public static readonly ListDomainPerformanceReportsResponseLinksItemMethod Patch = new(
+        Values.Patch
+    );
+
+    public static readonly ListDomainPerformanceReportsResponseLinksItemMethod Delete = new(
+        Values.Delete
+    );
+
+    public static readonly ListDomainPerformanceReportsResponseLinksItemMethod Options = new(
+        Values.Options
+    );
+
+    public static readonly ListDomainPerformanceReportsResponseLinksItemMethod Head = new(
+        Values.Head
+    );
+
+    public ListDomainPerformanceReportsResponseLinksItemMethod(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static ListDomainPerformanceReportsResponseLinksItemMethod FromCustom(string value)
+    {
+        return new ListDomainPerformanceReportsResponseLinksItemMethod(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        ListDomainPerformanceReportsResponseLinksItemMethod value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        ListDomainPerformanceReportsResponseLinksItemMethod value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(
+        ListDomainPerformanceReportsResponseLinksItemMethod value
+    ) => value.Value;
+
+    public static explicit operator ListDomainPerformanceReportsResponseLinksItemMethod(
+        string value
+    ) => new(value);
+
+    internal class ListDomainPerformanceReportsResponseLinksItemMethodSerializer
+        : JsonConverter<ListDomainPerformanceReportsResponseLinksItemMethod>
+    {
+        public override ListDomainPerformanceReportsResponseLinksItemMethod Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ListDomainPerformanceReportsResponseLinksItemMethod(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ListDomainPerformanceReportsResponseLinksItemMethod value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+
+        public override ListDomainPerformanceReportsResponseLinksItemMethod ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ListDomainPerformanceReportsResponseLinksItemMethod(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ListDomainPerformanceReportsResponseLinksItemMethod value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
+    }
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Get = "GET";
+
+        public const string Post = "POST";
+
+        public const string Put = "PUT";
+
+        public const string Patch = "PATCH";
+
+        public const string Delete = "DELETE";
+
+        public const string Options = "OPTIONS";
+
+        public const string Head = "HEAD";
+    }
+}

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/Mailchimp.Marketing.Test/Mailchimp.Marketing.Test.csproj" />
+  <Project Path="src/Mailchimp.Marketing/Mailchimp.Marketing.csproj" />
+</Solution>
