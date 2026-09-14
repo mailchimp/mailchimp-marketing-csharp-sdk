@@ -9,18 +9,6 @@ public partial class MailchimpClient : IMailchimpClient
     public MailchimpClient(string? token = null, ClientOptions? clientOptions = null)
     {
         clientOptions ??= new ClientOptions();
-        if (clientOptions.ServerPrefix != null)
-        {
-            var _serverPrefix = clientOptions.ServerPrefix ?? "us1";
-            if (!clientOptions.IsBaseUrlExplicitlySet)
-            {
-                clientOptions.BaseUrl = $"https://{_serverPrefix}.api.mailchimp.com";
-            }
-            else if (clientOptions.BaseUrl == MailchimpClientEnvironment.Default)
-            {
-                clientOptions.BaseUrl = $"https://{_serverPrefix}.api.mailchimp.com";
-            }
-        }
         var platformHeaders = new Headers(
             new Dictionary<string, string>()
             {
