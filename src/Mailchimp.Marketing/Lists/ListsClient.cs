@@ -5728,7 +5728,7 @@ public partial class ListsClient : IListsClient
         }
     }
 
-    private async Task<WithRawResponse<ListWebhooks>> CreateWebhookAsyncCore(
+    private async Task<WithRawResponse<CreateWebhookListsResponse>> CreateWebhookAsyncCore(
         CreateWebhookListsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -5768,8 +5768,8 @@ public partial class ListsClient : IListsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<ListWebhooks>(responseBody)!;
-                return new WithRawResponse<ListWebhooks>()
+                var responseData = JsonUtils.Deserialize<CreateWebhookListsResponse>(responseBody)!;
+                return new WithRawResponse<CreateWebhookListsResponse>()
                 {
                     Data = responseData,
                     RawResponse = new Mailchimp.Marketing.RawResponse()
@@ -7735,13 +7735,13 @@ public partial class ListsClient : IListsClient
     ///     new CreateWebhookListsRequest { ListId = "list_id", Body = new AddWebhook() }
     /// );
     /// </code></example>
-    public WithRawResponseTask<ListWebhooks> CreateWebhookAsync(
+    public WithRawResponseTask<CreateWebhookListsResponse> CreateWebhookAsync(
         CreateWebhookListsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<ListWebhooks>(
+        return new WithRawResponseTask<CreateWebhookListsResponse>(
             CreateWebhookAsyncCore(request, options, cancellationToken)
         );
     }

@@ -3,5 +3,5 @@ namespace Mailchimp.Marketing;
 [Serializable]
 internal class Version
 {
-    public const string Current = "0.0.198";
+    public const string Current = "0.0.216";
 }
