@@ -4,15 +4,19 @@ using Mailchimp.Marketing.Core;
 
 namespace Mailchimp.Marketing;
 
-/// <summary>
-/// A webhook configured for batch status updates.
-/// </summary>
 [Serializable]
-public record BatchWebhook : IJsonOnDeserialized
+public record CreateBatchWebhooksResponse : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
+
+    /// <summary>
+    /// The HMAC signing secret. Returned exactly once at creation. This should be stored securely; if lost, delete and recreate the webhook to obtain a new secret.
+    /// </summary>
+    [JsonAccess(JsonAccessType.ReadOnly)]
+    [JsonPropertyName("signing_secret")]
+    public string? SigningSecret { get; set; }
 
     /// <summary>
     /// A list of link types and descriptions for the API schema documents.

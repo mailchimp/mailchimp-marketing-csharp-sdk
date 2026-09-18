@@ -1,0 +1,32 @@
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
+using Mailchimp.Marketing.Core;
+
+namespace Mailchimp.Marketing;
+
+/// <summary>
+/// A computation performed by the Mailchimp platform, triggered whenever any of its inputs change. Some inputs are controlled by API users, while others are tracked internally by the platform. Computation is based on: audience opt-in configuration (single vs. double opt-in), marketing consent status, and deliverability status (an internal state for a contact, maintained by Mailchimp for a specific marketing channel instance). This new API field is distinct from how contacts are displayed in the UI. See the [Audiences (BETA) documentation](https://mailchimp.com/developer/marketing/docs/audiences-introduction) to learn about supported values.
+/// </summary>
+[Serializable]
+public record AudiencesContactSmsChannelEffectiveSubscriptionStatus : IJsonOnDeserialized
+{
+    [JsonExtensionData]
+    private readonly IDictionary<string, JsonElement> _extensionData =
+        new Dictionary<string, JsonElement>();
+
+    [JsonAccess(JsonAccessType.ReadOnly)]
+    [JsonPropertyName("value")]
+    public AudiencesContactSmsChannelEffectiveSubscriptionStatusValue? Value { get; set; }
+
+    [JsonIgnore]
+    public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
+
+    void IJsonOnDeserialized.OnDeserialized() =>
+        AdditionalProperties.CopyFromExtensionData(_extensionData);
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+        return JsonUtils.Serialize(this);
+    }
+}

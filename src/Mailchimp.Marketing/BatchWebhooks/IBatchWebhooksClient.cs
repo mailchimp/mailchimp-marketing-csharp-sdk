@@ -16,7 +16,7 @@ public partial interface IBatchWebhooksClient
     /// <summary>
     /// Configure a webhook that will fire whenever any batch request completes processing.  You may only have a maximum of 20 batch webhooks.
     /// </summary>
-    WithRawResponseTask<BatchWebhook> CreateAsync(
+    WithRawResponseTask<CreateBatchWebhooksResponse> CreateAsync(
         CreateBatchWebhooksRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

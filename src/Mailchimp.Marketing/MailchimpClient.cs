@@ -36,6 +36,7 @@ public partial class MailchimpClient : IMailchimpClient
         Root = new RootClient(_client);
         AccountExports = new AccountExportsClient(_client);
         ActivityFeed = new ActivityFeedClient(_client);
+        Audiences = new AudiencesClient(_client);
         AuthorizedApps = new AuthorizedAppsClient(_client);
         Automations = new AutomationsClient(_client);
         BatchWebhooks = new BatchWebhooksClient(_client);
@@ -67,6 +68,8 @@ public partial class MailchimpClient : IMailchimpClient
     public IAccountExportsClient AccountExports { get; }
 
     public IActivityFeedClient ActivityFeed { get; }
+
+    public IAudiencesClient Audiences { get; }
 
     public IAuthorizedAppsClient AuthorizedApps { get; }
 

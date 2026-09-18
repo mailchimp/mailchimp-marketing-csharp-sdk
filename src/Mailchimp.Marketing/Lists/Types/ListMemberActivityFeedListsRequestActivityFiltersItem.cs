@@ -98,21 +98,6 @@ public readonly record struct ListMemberActivityFeedListsRequestActivityFiltersI
     public static readonly ListMemberActivityFeedListsRequestActivityFiltersItem WhatsappDelivered =
         new(Values.WhatsappDelivered);
 
-    public static readonly ListMemberActivityFeedListsRequestActivityFiltersItem WhatsappLinkClick =
-        new(Values.WhatsappLinkClick);
-
-    public static readonly ListMemberActivityFeedListsRequestActivityFiltersItem WhatsappSubscribe =
-        new(Values.WhatsappSubscribe);
-
-    public static readonly ListMemberActivityFeedListsRequestActivityFiltersItem WhatsappSubscriptionPhoneUpdated =
-        new(Values.WhatsappSubscriptionPhoneUpdated);
-
-    public static readonly ListMemberActivityFeedListsRequestActivityFiltersItem WhatsappUnsubscribe =
-        new(Values.WhatsappUnsubscribe);
-
-    public static readonly ListMemberActivityFeedListsRequestActivityFiltersItem WhatsappUsedKeyword =
-        new(Values.WhatsappUsedKeyword);
-
     public ListMemberActivityFeedListsRequestActivityFiltersItem(string value)
     {
         Value = value;
@@ -267,16 +252,5 @@ public readonly record struct ListMemberActivityFeedListsRequestActivityFiltersI
         public const string WhatsappBulkSent = "whatsapp_bulk_sent";
 
         public const string WhatsappDelivered = "whatsapp_delivered";
-
-        public const string WhatsappLinkClick = "whatsapp_link_click";
-
-        public const string WhatsappSubscribe = "whatsapp_subscribe";
-
-        public const string WhatsappSubscriptionPhoneUpdated =
-            "whatsapp_subscription_phone_updated";
-
-        public const string WhatsappUnsubscribe = "whatsapp_unsubscribe";
-
-        public const string WhatsappUsedKeyword = "whatsapp_used_keyword";
     }
 }
