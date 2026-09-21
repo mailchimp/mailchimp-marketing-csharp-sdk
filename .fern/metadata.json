@@ -6,9 +6,10 @@
     "namespace": "Mailchimp.Marketing",
     "client-class-name": "MailchimpClient"
   },
-  "originGitCommit": "c7a79a5a59233943d93cc6c34bb8e872117c1cb7",
+  "originGitCommit": "d20560838609ad9e6ca245084bae2c8a301ee0c9",
   "originGitCommitIsDirty": false,
   "invokedBy": "ci",
+  "requestedVersion": "1.0.0",
   "ciProvider": "github",
-  "sdkVersion": "0.0.216"
+  "sdkVersion": "1.0.0"
 }
