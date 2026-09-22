@@ -1,0 +1,86 @@
+using Mailchimp.Marketing;
+using Mailchimp.Marketing.Test.Unit.MockServer;
+using Mailchimp.Marketing.Test.Utils;
+using NUnit.Framework;
+
+namespace Mailchimp.Marketing.Test.Unit.MockServer.Audiences;
+
+[TestFixture]
+[Parallelizable(ParallelScope.Self)]
+public class PatchAudienceContactTest : BaseMockServerTest
+{
+    [NUnit.Framework.Test]
+    public async Task MockServerTest()
+    {
+        const string requestJson = """
+            {}
+            """;
+
+        const string mockResponse = """
+            {
+              "email_channel": {
+                "effective_subscription_status": {},
+                "email": "example@freddiemail.com",
+                "hashed_email": "9115d71ba28088047d342e3bcedacd0f",
+                "marketing_consent": {
+                  "status": "consented",
+                  "captured_at": "2024-01-15T10:30:00.000Z"
+                },
+                "source": {
+                  "name": "name"
+                }
+              },
+              "language": "",
+              "merge_fields": {
+                "key": {
+                  "addr1": "addr1",
+                  "addr2": "addr2",
+                  "city": "city",
+                  "state": "state",
+                  "zip": "zip",
+                  "country": "country"
+                }
+              },
+              "sms_channel": {
+                "effective_subscription_status": {},
+                "marketing_consent": {
+                  "status": "consented",
+                  "captured_at": "2024-01-15T10:30:00.000Z"
+                },
+                "sms_phone": "+14045550102",
+                "source": {
+                  "name": "name"
+                },
+                "hashed_sms_phone": "0572084e1f8288816f02cdb7bd930c62400bc8aef510adfaa9eec2b995fa7609"
+              },
+              "source": {
+                "name": "name"
+              },
+              "tags": [
+                "tags"
+              ]
+            }
+            """;
+
+        Server
+            .Given(
+                WireMock
+                    .RequestBuilders.Request.Create()
+                    .WithPath("/3.0/audiences/audience_id/contacts/contact_id")
+                    .WithHeader("Content-Type", "application/json")
+                    .UsingPatch()
+                    .WithBodyAsJson(requestJson)
+            )
+            .RespondWith(
+                WireMock
+                    .ResponseBuilders.Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody(mockResponse)
+            );
+
+        var response = await Client.Audiences.PatchAudienceContactAsync(
+            new PatchAudienceContactRequest { AudienceId = "audience_id", ContactId = "contact_id" }
+        );
+        JsonAssert.AreEqual(response, mockResponse);
+    }
+}

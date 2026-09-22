@@ -9,24 +9,13 @@ public partial class MailchimpClient : IMailchimpClient
     public MailchimpClient(string? token = null, ClientOptions? clientOptions = null)
     {
         clientOptions ??= new ClientOptions();
-        if (clientOptions.ServerPrefix != null)
-        {
-            var _serverPrefix = clientOptions.ServerPrefix ?? "us1";
-            if (!clientOptions.IsBaseUrlExplicitlySet)
-            {
-                clientOptions.BaseUrl = $"https://{_serverPrefix}.api.mailchimp.com";
-            }
-            else if (clientOptions.BaseUrl == MailchimpClientEnvironment.Default)
-            {
-                clientOptions.BaseUrl = $"https://{_serverPrefix}.api.mailchimp.com";
-            }
-        }
         var platformHeaders = new Headers(
             new Dictionary<string, string>()
             {
                 { "X-Fern-Language", "C#" },
                 { "X-Fern-SDK-Name", "Mailchimp.Marketing" },
                 { "X-Fern-SDK-Version", global::Mailchimp.Marketing.Version.Current },
+                { "User-Agent", "Mailchimp.Marketing/1.0.3" },
             }
         );
         foreach (var header in platformHeaders)
@@ -48,6 +37,7 @@ public partial class MailchimpClient : IMailchimpClient
         Root = new RootClient(_client);
         AccountExports = new AccountExportsClient(_client);
         ActivityFeed = new ActivityFeedClient(_client);
+        Audiences = new AudiencesClient(_client);
         AuthorizedApps = new AuthorizedAppsClient(_client);
         Automations = new AutomationsClient(_client);
         BatchWebhooks = new BatchWebhooksClient(_client);
@@ -79,6 +69,8 @@ public partial class MailchimpClient : IMailchimpClient
     public IAccountExportsClient AccountExports { get; }
 
     public IActivityFeedClient ActivityFeed { get; }
+
+    public IAudiencesClient Audiences { get; }
 
     public IAuthorizedAppsClient AuthorizedApps { get; }
 

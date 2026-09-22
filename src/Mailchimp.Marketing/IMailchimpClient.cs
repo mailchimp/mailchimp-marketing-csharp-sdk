@@ -5,6 +5,7 @@ public partial interface IMailchimpClient
     public IRootClient Root { get; }
     public IAccountExportsClient AccountExports { get; }
     public IActivityFeedClient ActivityFeed { get; }
+    public IAudiencesClient Audiences { get; }
     public IAuthorizedAppsClient AuthorizedApps { get; }
     public IAutomationsClient Automations { get; }
     public IBatchWebhooksClient BatchWebhooks { get; }

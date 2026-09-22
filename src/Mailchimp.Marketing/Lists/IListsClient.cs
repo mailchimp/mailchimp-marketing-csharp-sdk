@@ -601,7 +601,7 @@ public partial interface IListsClient
     /// <summary>
     /// Create a new webhook for a specific list.
     /// </summary>
-    WithRawResponseTask<ListWebhooks> CreateWebhookAsync(
+    WithRawResponseTask<CreateWebhookListsResponse> CreateWebhookAsync(
         CreateWebhookListsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

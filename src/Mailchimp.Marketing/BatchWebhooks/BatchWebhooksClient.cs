@@ -111,7 +111,7 @@ public partial class BatchWebhooksClient : IBatchWebhooksClient
         }
     }
 
-    private async Task<WithRawResponse<BatchWebhook>> CreateAsyncCore(
+    private async Task<WithRawResponse<CreateBatchWebhooksResponse>> CreateAsyncCore(
         CreateBatchWebhooksRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -148,8 +148,10 @@ public partial class BatchWebhooksClient : IBatchWebhooksClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<BatchWebhook>(responseBody)!;
-                return new WithRawResponse<BatchWebhook>()
+                var responseData = JsonUtils.Deserialize<CreateBatchWebhooksResponse>(
+                    responseBody
+                )!;
+                return new WithRawResponse<CreateBatchWebhooksResponse>()
                 {
                     Data = responseData,
                     RawResponse = new Mailchimp.Marketing.RawResponse()
@@ -472,13 +474,13 @@ public partial class BatchWebhooksClient : IBatchWebhooksClient
     ///     new CreateBatchWebhooksRequest { Url = "http://yourdomain.com/webhook" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<BatchWebhook> CreateAsync(
+    public WithRawResponseTask<CreateBatchWebhooksResponse> CreateAsync(
         CreateBatchWebhooksRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<BatchWebhook>(
+        return new WithRawResponseTask<CreateBatchWebhooksResponse>(
             CreateAsyncCore(request, options, cancellationToken)
         );
     }

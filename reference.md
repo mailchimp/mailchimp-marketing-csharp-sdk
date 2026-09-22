@@ -321,6 +321,351 @@ await client.ActivityFeed.ListChimpChatterAsync(new ListChimpChatterActivityFeed
 </dl>
 </details>
 
+## Audiences
+<details><summary><code>client.Audiences.<a href="/src/Mailchimp.Marketing/Audiences/AudiencesClient.cs">GetAudienceContactListAsync</a>(GetAudienceContactListRequest { ... }) -> WithRawResponseTask&lt;GetAudienceContactListResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a list of omni-channel contacts for a given audience.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Audiences.GetAudienceContactListAsync(
+    new GetAudienceContactListRequest { AudienceId = "audience_id" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetAudienceContactListRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Audiences.<a href="/src/Mailchimp.Marketing/Audiences/AudiencesClient.cs">CreateAudienceContactAsync</a>(CreateAudienceContactRequest { ... }) -> WithRawResponseTask&lt;AudiencesContact&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new omni-channel contact for an audience.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Audiences.CreateAudienceContactAsync(
+    new CreateAudienceContactRequest { AudienceId = "audience_id" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreateAudienceContactRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Audiences.<a href="/src/Mailchimp.Marketing/Audiences/AudiencesClient.cs">GetAudienceContactAsync</a>(GetAudienceContactRequest { ... }) -> WithRawResponseTask&lt;AudiencesContact&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a specific omni-channel contact in an audience.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Audiences.GetAudienceContactAsync(
+    new GetAudienceContactRequest { AudienceId = "audience_id", ContactId = "contact_id" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetAudienceContactRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Audiences.<a href="/src/Mailchimp.Marketing/Audiences/AudiencesClient.cs">PatchAudienceContactAsync</a>(PatchAudienceContactRequest { ... }) -> WithRawResponseTask&lt;AudiencesContact&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing omni-channel contact.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Audiences.PatchAudienceContactAsync(
+    new PatchAudienceContactRequest { AudienceId = "audience_id", ContactId = "contact_id" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `PatchAudienceContactRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Audiences.<a href="/src/Mailchimp.Marketing/Audiences/AudiencesClient.cs">PostAudiencesContactsActionsArchiveAsync</a>(PostAudiencesContactsActionsArchiveRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Archives a Contact.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Audiences.PostAudiencesContactsActionsArchiveAsync(
+    new PostAudiencesContactsActionsArchiveRequest
+    {
+        AudienceId = "audience_id",
+        ContactId = "contact_id",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `PostAudiencesContactsActionsArchiveRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Audiences.<a href="/src/Mailchimp.Marketing/Audiences/AudiencesClient.cs">PostAudiencesContactsActionsForgetAsync</a>(PostAudiencesContactsActionsForgetRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Forgets a Contact.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Audiences.PostAudiencesContactsActionsForgetAsync(
+    new PostAudiencesContactsActionsForgetRequest
+    {
+        AudienceId = "audience_id",
+        ContactId = "contact_id",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `PostAudiencesContactsActionsForgetRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## AuthorizedApps
 <details><summary><code>client.AuthorizedApps.<a href="/src/Mailchimp.Marketing/AuthorizedApps/AuthorizedAppsClient.cs">ListAsync</a>(ListAuthorizedAppsRequest { ... }) -> Pager&lt;ListAuthorizedAppsResponseAppsItem&gt;</code></summary>
 <dl>
@@ -1539,7 +1884,7 @@ await client.BatchWebhooks.ListAsync(new ListBatchWebhooksRequest());
 </dl>
 </details>
 
-<details><summary><code>client.BatchWebhooks.<a href="/src/Mailchimp.Marketing/BatchWebhooks/BatchWebhooksClient.cs">CreateAsync</a>(CreateBatchWebhooksRequest { ... }) -> WithRawResponseTask&lt;BatchWebhook&gt;</code></summary>
+<details><summary><code>client.BatchWebhooks.<a href="/src/Mailchimp.Marketing/BatchWebhooks/BatchWebhooksClient.cs">CreateAsync</a>(CreateBatchWebhooksRequest { ... }) -> WithRawResponseTask&lt;CreateBatchWebhooksResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12593,7 +12938,7 @@ await client.Lists.ListWebhooksAsync(new ListWebhooksListsRequest { ListId = "li
 </dl>
 </details>
 
-<details><summary><code>client.Lists.<a href="/src/Mailchimp.Marketing/Lists/ListsClient.cs">CreateWebhookAsync</a>(CreateWebhookListsRequest { ... }) -> WithRawResponseTask&lt;ListWebhooks&gt;</code></summary>
+<details><summary><code>client.Lists.<a href="/src/Mailchimp.Marketing/Lists/ListsClient.cs">CreateWebhookAsync</a>(CreateWebhookListsRequest { ... }) -> WithRawResponseTask&lt;CreateWebhookListsResponse&gt;</code></summary>
 <dl>
 <dd>
 

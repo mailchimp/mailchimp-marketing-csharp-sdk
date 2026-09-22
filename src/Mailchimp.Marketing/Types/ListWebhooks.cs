@@ -50,13 +50,6 @@ public record ListWebhooks : IJsonOnDeserialized
     public bool? SigningEnabled { get; set; }
 
     /// <summary>
-    /// The HMAC signing secret. Returned exactly once at creation. This should be stored securely; if lost, delete and recreate the webhook to obtain a new secret.
-    /// </summary>
-    [JsonAccess(JsonAccessType.ReadOnly)]
-    [JsonPropertyName("signing_secret")]
-    public string? SigningSecret { get; set; }
-
-    /// <summary>
     /// The possible sources of any events that can trigger the webhook and whether they are enabled.
     /// </summary>
     [JsonAccess(JsonAccessType.ReadOnly)]
