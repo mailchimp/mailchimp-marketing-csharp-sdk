@@ -36,14 +36,20 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-csharp-sdk: 2.83.2
-current_generation: 8de6408ceb4053987dba3c87a609826d849b40e2
+  - commit_sha: 89b208f8a783f7ab635b4088b9d267bab6c5610d
+    tree_hash: d380c092af80592431b18faabb9392d9200496bb
+    timestamp: 2026-09-22T19:08:03.941Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-csharp-sdk: 2.84.1
+current_generation: 89b208f8a783f7ab635b4088b9d267bab6c5610d
 patches:
   - id: patch-c3626aab
     content_hash: sha256:5aa0ab7d1c9a8fc8707af20bf7b288559814ade3249c18db4e3a761713e2f91a
     original_commit: c3626aab1ead060ee873c88a44b672a2186dd7fb
     original_message: Create LICENSE file
     original_author: Keith Baxter <keith_baxter@intuit.com>
-    base_generation: 8de6408ceb4053987dba3c87a609826d849b40e2
+    base_generation: 89b208f8a783f7ab635b4088b9d267bab6c5610d
     files:
       - LICENSE
       - NOTICE
@@ -1424,3 +1430,129 @@ patches:
             public IVerifiedDomainsClient VerifiedDomains { get; }
         }
     status: unresolved
+  - id: patch-ca68b98f
+    content_hash: sha256:0f5417c7bdf4659291dca6dbcc227c5cd3b397a654db623e79701e3ecc8a04d5
+    original_commit: ca68b98f93e10b4f4bc66a90ead2de428c2b1502
+    original_message: Add Nuget GH action for publishing package
+    original_author: Keith Baxter <keith_baxter@intuit.com>
+    base_generation: 89b208f8a783f7ab635b4088b9d267bab6c5610d
+    files:
+      - .github/workflows/build.yml
+    patch_content: |
+      diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
+      new file mode 100644
+      index 0000000..880ac62
+      --- /dev/null
+      +++ b/.github/workflows/build.yml
+      @@ -0,0 +1,22 @@
+      +name: nuget-publish
+      +
+      +on:
+      +  pull_request:
+      +  push:
+      +    branches:
+      +      - main
+      +
+      +jobs:
+      +  build-and-publish:
+      +    permissions:
+      +      id-token: write
+      +    
+      +    steps:
+      +      - name: NuGet login (OIDC → temp API key)
+      +        uses: NuGet/login@v1
+      +        id: login
+      +        with:
+      +          user: mc-keith
+      +    
+      +      - name: NuGet push
+      +        run: dotnet nuget push artifacts/my-sdk.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      \ No newline at end of file
+    theirs_snapshot:
+      .github/workflows/build.yml: |-
+        name: nuget-publish
+
+        on:
+          pull_request:
+          push:
+            branches:
+              - main
+
+        jobs:
+          build-and-publish:
+            permissions:
+              id-token: write
+            
+            steps:
+              - name: NuGet login (OIDC → temp API key)
+                uses: NuGet/login@v1
+                id: login
+                with:
+                  user: mc-keith
+            
+              - name: NuGet push
+                run: dotnet nuget push artifacts/my-sdk.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+    user_owned: true
+  - id: patch-33e0fd49
+    content_hash: sha256:0f5417c7bdf4659291dca6dbcc227c5cd3b397a654db623e79701e3ecc8a04d5
+    original_commit: 33e0fd49f7ef853abfa66c1dc36977960c9edb61
+    original_message: Update actions metadata
+    original_author: Keith Baxter <keith_baxter@intuit.com>
+    base_generation: 89b208f8a783f7ab635b4088b9d267bab6c5610d
+    files:
+      - .github/workflows/build.yml
+    patch_content: |
+      diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
+      new file mode 100644
+      index 0000000..880ac62
+      --- /dev/null
+      +++ b/.github/workflows/build.yml
+      @@ -0,0 +1,22 @@
+      +name: nuget-publish
+      +
+      +on:
+      +  pull_request:
+      +  push:
+      +    branches:
+      +      - main
+      +
+      +jobs:
+      +  build-and-publish:
+      +    permissions:
+      +      id-token: write
+      +    
+      +    steps:
+      +      - name: NuGet login (OIDC → temp API key)
+      +        uses: NuGet/login@v1
+      +        id: login
+      +        with:
+      +          user: mc-keith
+      +    
+      +      - name: NuGet push
+      +        run: dotnet nuget push artifacts/my-sdk.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      \ No newline at end of file
+    theirs_snapshot:
+      .github/workflows/build.yml: |-
+        name: nuget-publish
+
+        on:
+          pull_request:
+          push:
+            branches:
+              - main
+
+        jobs:
+          build-and-publish:
+            permissions:
+              id-token: write
+            
+            steps:
+              - name: NuGet login (OIDC → temp API key)
+                uses: NuGet/login@v1
+                id: login
+                with:
+                  user: mc-keith
+            
+              - name: NuGet push
+                run: dotnet nuget push artifacts/my-sdk.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+    user_owned: true
