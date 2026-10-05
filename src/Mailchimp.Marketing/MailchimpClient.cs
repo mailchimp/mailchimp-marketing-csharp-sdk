@@ -15,7 +15,7 @@ public partial class MailchimpClient : IMailchimpClient
                 { "X-Fern-Language", "C#" },
                 { "X-Fern-SDK-Name", "Mailchimp.Marketing" },
                 { "X-Fern-SDK-Version", global::Mailchimp.Marketing.Version.Current },
-                { "User-Agent", "Mailchimp.Marketing/1.0.2" },
+                { "User-Agent", "Mailchimp.Marketing/1.0.3" },
             }
         );
         foreach (var header in platformHeaders)
